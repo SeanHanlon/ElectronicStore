@@ -35,4 +35,14 @@ public class ItemResource {
 		itemService.addItem(item);
 	}
 	
+	@POST
+	@Produces(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/searchByCategory")
+	public List<Item> searchCategory(@FormParam(value = "searchParam") String category) {
+		
+		return null;
+		
+	}
+	
 }
