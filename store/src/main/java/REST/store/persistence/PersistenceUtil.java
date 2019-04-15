@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
+import REST.store.model.Item;
 import REST.store.model.User;
 
   
@@ -52,6 +52,13 @@ public class PersistenceUtil implements Serializable {
 		List<User> users = (List<User>) em.createNamedQuery("User.findAllUsers").getResultList();
 		em.close();
 		return users;
+	}
+	
+	public static List<Item> findAllItems(){
+		EntityManager em = emf.createEntityManager();
+		List<Item> items = (List<Item>) em.createNamedQuery("Item.findAllItems").getResultList();
+		em.close();
+		return items;
 	}
 
 	public static User findUserByName(String name){

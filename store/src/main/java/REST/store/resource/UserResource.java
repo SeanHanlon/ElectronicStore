@@ -21,8 +21,8 @@ public class UserResource {
 	UserService userService = new UserService();
 	
 	@GET
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_XML)
+	@Path("/getUsers")
 	public List<User> getUsers() {
 		return userService.getAllUsers();
 	}
