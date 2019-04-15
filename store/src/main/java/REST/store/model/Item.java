@@ -27,16 +27,18 @@ public class Item {
 	private String manufacturer;
 	private double price;
 	private String category;
+	private int stockLevel;
 	
 	public Item() {
 		
 	}
 	
-	public Item(String title, String manufacturer, double price, String category) {
+	public Item(String title, String manufacturer, double price, String category, int stockLevel) {
 		this.title=title;
 		this.manufacturer=manufacturer;
 		this.price=price;
 		this.category=category;
+		this.stockLevel=stockLevel;
 	}
 
 	public int getId() {
@@ -78,5 +80,15 @@ public class Item {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	public int getStockLevel() {
+		return stockLevel;
+	}
+
+	public void setStockLevel(int stockLevel) {
+		this.stockLevel = stockLevel;
+	}
+	
+	
 	
 }

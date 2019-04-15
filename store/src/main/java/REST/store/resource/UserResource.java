@@ -65,4 +65,6 @@ public class UserResource {
 		request.setAttribute("customer", null);
 	}
 	
+	
+	
 }

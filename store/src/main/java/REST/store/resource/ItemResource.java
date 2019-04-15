@@ -29,8 +29,10 @@ public class ItemResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("/addItem")
 	public void addItem(@FormParam(value = "title") String title, @FormParam(value = "manufacturer") String manufacturer,
-			@FormParam(value = "price") double price, @FormParam(value = "category") String category) {
-		Item item = new Item(title, manufacturer, price, category);
+			@FormParam(value = "price") double price, @FormParam(value = "category") String category,
+			@FormParam(value = "stockLevel") int stockLevel) {
+		Item item = new Item(title, manufacturer, price, category, stockLevel);
 		itemService.addItem(item);
 	}
+	
 }
