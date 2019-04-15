@@ -10,7 +10,7 @@ import javax.persistence.NamedQueries;
 
 @NamedQueries( {
 	@NamedQuery(name = "User.findAllUsers", query = "select o from User o"),
-	@NamedQuery(name = "User.findByEmail", query = "select o from User o where o.email=:email "),
+	@NamedQuery(name = "User.findByEmail", query = "select o from User o where o.email=:email ")
 })
 
 @XmlRootElement
@@ -24,16 +24,20 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
+	private String address;
+	private String payMethod;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String email, String password) {
+	public User(String name, String email, String password, String address, String payMethd) {
 		//super();
 		this.name=name;
 		this.email=email;
 		this.password=password;
+		this.address=address;
+		this.payMethod=payMethod;
 	}
 
 	public int getId() {
@@ -67,5 +71,23 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPayMethod() {
+		return payMethod;
+	}
+
+	public void setPayMethod(String payMethod) {
+		this.payMethod = payMethod;
+	}
+	
+	
 
 }
