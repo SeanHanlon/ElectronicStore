@@ -15,6 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 	@NamedQuery(name = "Item.findByTitle", query = "select o from Item o where o.title=:title ")
 })
 
+//change
 @XmlRootElement
 @Entity
 public class Item {
