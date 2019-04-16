@@ -35,7 +35,7 @@ public class Purchase {
 	private User user;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "content", joinColumns = {
+	@JoinTable(name = "purchase_content", joinColumns = {
 			@JoinColumn(name = "purchase_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "item_id", referencedColumnName = "id") })
 	@ElementCollection(targetClass = Item.class)
