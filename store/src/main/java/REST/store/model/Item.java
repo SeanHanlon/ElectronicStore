@@ -1,9 +1,13 @@
 package REST.store.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,6 +32,9 @@ public class Item {
 	private double price;
 	private String category;
 	private int stockLevel;
+	
+	@ManyToMany(mappedBy = "purchase_content")
+	private Set<Purchase> purchases = new HashSet<Purchase>();
 	
 	public Item() {
 		
@@ -87,6 +94,14 @@ public class Item {
 
 	public void setStockLevel(int stockLevel) {
 		this.stockLevel = stockLevel;
+	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
 	}
 	
 	
