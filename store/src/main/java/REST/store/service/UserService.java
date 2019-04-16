@@ -31,4 +31,9 @@ public class UserService {
 		
 		return null;
 	}
+	
+	public void removeUser(int id) {
+		User user = PersistenceUtil.findUserById(id);
+		PersistenceUtil.remove(user);
+	}
 }

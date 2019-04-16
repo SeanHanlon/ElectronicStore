@@ -10,12 +10,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @NamedQueries( {
 	@NamedQuery(name = "Item.findAllItems", query = "select o from Item o"),
-	@NamedQuery(name = "Item.findByCategory", query = "select o from Item o where o.category=:category "),
+	@NamedQuery(name = "Item.findByCategory", query = "select o from Item o where o.category like concat('%', :category, '%') "),
 	@NamedQuery(name = "Item.findByManufacturer", query = "select o from Item o where o.manufacturer=:manufacturer "),
-	@NamedQuery(name = "Item.findByTitle", query = "select o from Item o where o.title=:title ")
+	@NamedQuery(name = "Item.findByTitle", query = "select o from Item o where o.title like concat('%', :title, '%') ")
 })
 
-//change
 @XmlRootElement
 @Entity
 public class Item {

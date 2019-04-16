@@ -39,9 +39,50 @@ public class ItemResource {
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("/searchByCategory")
-	public List<Item> searchCategory(@FormParam(value = "searchParam") String category) {
+	public List<Item> searchCategory(@FormParam(value = "searchCat") String category) {
+		List<Item> items = itemService.getItemByCategory(category);
+		if(items != null)
+		{
+			return items;
+		}
+		else
+		{
+			return null;
+		}
 		
-		return null;
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/searchByManu")
+	public List<Item> searchManu(@FormParam(value = "searchManu") String manufacturer) {
+		List<Item> items = itemService.getItemByManu(manufacturer);
+		if(items != null)
+		{
+			return items;
+		}
+		else
+		{
+			return null;
+		}
+		
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/searchByTitle")
+	public List<Item> searchTitle(@FormParam(value = "searchTitle") String title) {
+		List<Item> items = itemService.getItemByTitle(title);
+		if(items != null)
+		{
+			return items;
+		}
+		else
+		{
+			return null;
+		}
 		
 	}
 	

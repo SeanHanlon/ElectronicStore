@@ -20,5 +20,37 @@ public class ItemService {
 	public void addItem(Item item) {
 		PersistenceUtil.persist(item);
 	}
+	
+	public List<Item> getItemByCategory(String category) {
+		List<Item> found = PersistenceUtil.findItemByCategory(category);
+		if(found!=null)
+		{
+			return found;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public List<Item> getItemByManu(String manufacturer) {
+		List<Item> found = PersistenceUtil.findItemByManu(manufacturer);
+		if(found!=null)
+		{
+			return found;
+		}
+		else {
+			return null;
+		}
+	}
 
+	public List<Item> getItemByTitle(String title) {
+		List<Item> found = PersistenceUtil.findItemByTitle(title);
+		if(found!=null)
+		{
+			return found;
+		}
+		else {
+			return null;
+		}
+	}
 }

@@ -2,6 +2,9 @@ package REST.store.model;
 
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.eclipse.jetty.util.security.Password;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +13,8 @@ import javax.persistence.NamedQueries;
 
 @NamedQueries( {
 	@NamedQuery(name = "User.findAllUsers", query = "select o from User o"),
-	@NamedQuery(name = "User.findByEmail", query = "select o from User o where o.email=:email ")
+	@NamedQuery(name = "User.findByEmail", query = "select o from User o where o.email=:email "),
+	@NamedQuery(name = "User.findById", query = "select o from User o where o.id=:id ")
 })
 
 @XmlRootElement
@@ -31,7 +35,7 @@ public class User {
 		
 	}
 	
-	public User(String name, String email, String password, String address, String payMethd) {
+	public User(String name, String email, String password, String address, String payMethod) {
 		//super();
 		this.name=name;
 		this.email=email;
@@ -64,16 +68,24 @@ public class User {
 		this.email = email;
 	}
 
+	/*
+	 * public Password getPassword() { return password; }
+	 * 
+	 * public void setPassword(Password password) { this.password = password; }
+	 */
+	
+	
+
+	public String getAddress() {
+		return address;
+	}
+
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	public void setAddress(String address) {

@@ -4,13 +4,17 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.jetty.util.security.Password;
 
 import REST.store.service.UserService;
 import REST.store.model.User;
@@ -22,7 +26,6 @@ public class UserResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
-	@Path("/getUsers")
 	public List<User> getUsers() {
 		return userService.getAllUsers();
 	}
@@ -65,6 +68,11 @@ public class UserResource {
 		request.setAttribute("customer", null);
 	}
 	
+	@DELETE
+	@Path("/{userID}")
+	public void deleteUser(@PathParam("userId") int id) {
+		userService.removeUser(id);
+	}
 	
 	
 }
