@@ -1,6 +1,7 @@
 package REST.store.model;
 
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import java.util.HashSet;
@@ -36,19 +37,19 @@ public class User {
 	private String email;
 	private String password;
 	private String address;
-	private String payMethod;
 	
+	@OneToOne
+	private ShoppingCart cart;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String email, String password, String address, String payMethod) {
+	public User(String name, String email, String password, String address) {
 		this.name=name;
 		this.email=email;
 		this.password=password;
 		this.address=address;
-		this.payMethod=payMethod;
 	}
 
 	public int getId() {
@@ -91,13 +92,15 @@ public class User {
 		this.address = address;
 	}
 
-	public String getPayMethod() {
-		return payMethod;
+	public ShoppingCart getCart() {
+		return cart;
 	}
 
-	public void setPayMethod(String payMethod) {
-		this.payMethod = payMethod;
+	public void setCart(ShoppingCart cart) {
+		this.cart = cart;
 	}
+
+	
 	
 	
 

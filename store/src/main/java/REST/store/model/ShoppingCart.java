@@ -3,6 +3,11 @@ package REST.store.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@Entity
 public class ShoppingCart {
 	
 	private final List<Item> items;

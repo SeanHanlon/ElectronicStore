@@ -30,8 +30,9 @@ public class ItemResource {
 	@Path("/addItem")
 	public void addItem(@FormParam(value = "title") String title, @FormParam(value = "manufacturer") String manufacturer,
 			@FormParam(value = "price") double price, @FormParam(value = "category") String category,
-			@FormParam(value = "stockLevel") int stockLevel) {
-		Item item = new Item(title, manufacturer, price, category, stockLevel);
+			@FormParam(value = "stockLevel") int stockLevel, @FormParam(value = "rating") int rating,
+			@FormParam(value = "review") String review) {
+		Item item = new Item(title, manufacturer, price, category, stockLevel, rating, review);
 		itemService.addItem(item);
 	}
 	

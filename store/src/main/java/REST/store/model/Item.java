@@ -32,6 +32,8 @@ public class Item {
 	private double price;
 	private String category;
 	private int stockLevel;
+	private int rating;
+	private String review;
 	
 	@ManyToMany(mappedBy = "purchase_content")
 	private Set<Purchase> purchases = new HashSet<Purchase>();
@@ -40,12 +42,15 @@ public class Item {
 		
 	}
 	
-	public Item(String title, String manufacturer, double price, String category, int stockLevel) {
+	public Item(String title, String manufacturer, double price, String category, int stockLevel, int rating,
+			String review) {
 		this.title=title;
 		this.manufacturer=manufacturer;
 		this.price=price;
 		this.category=category;
 		this.stockLevel=stockLevel;
+		this.rating=rating;
+		this.review=review;
 	}
 
 	public int getId() {
@@ -102,6 +107,22 @@ public class Item {
 
 	public void setPurchases(Set<Purchase> purchases) {
 		this.purchases = purchases;
+	}
+
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
 	}
 	
 	

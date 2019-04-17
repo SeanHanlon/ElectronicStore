@@ -32,10 +32,9 @@ public class UserResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Path("/addUser")
 	public void addUser(@FormParam(value = "name") String name, @FormParam(value = "email") String email,
-			@FormParam(value = "password") String password, @FormParam(value = "address") String address,
-			@FormParam(value = "payMethod") String payMethod) {
-		System.out.println(name+" "+payMethod);
-		User user = new User(name, email, password, address, payMethod);
+			@FormParam(value = "password") String password, @FormParam(value = "address") String address) {
+		System.out.println(name);
+		User user = new User(name, email, password, address);
 		userService.addUser(user);
 	}
 	
