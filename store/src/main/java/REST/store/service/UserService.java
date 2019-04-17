@@ -23,8 +23,7 @@ public class UserService {
 	public User loginUser(String email, String password) {
 		User user = PersistenceUtil.findUserByEmail(email);
 		
-		if(user != null && user.getPassword().equals(password)
-				&& user.getEmail().equals(email))
+		if(user != null && user.getPassword().equals(password) && user.getEmail().equals(email))
 		{
 			return user;
 		}

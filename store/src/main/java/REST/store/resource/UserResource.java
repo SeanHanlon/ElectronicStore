@@ -14,8 +14,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.jetty.util.security.Password;
-
 import REST.store.service.UserService;
 import REST.store.model.User;
 
@@ -36,6 +34,7 @@ public class UserResource {
 	public void addUser(@FormParam(value = "name") String name, @FormParam(value = "email") String email,
 			@FormParam(value = "password") String password, @FormParam(value = "address") String address,
 			@FormParam(value = "payMethod") String payMethod) {
+		System.out.println(name+" "+payMethod);
 		User user = new User(name, email, password, address, payMethod);
 		userService.addUser(user);
 	}

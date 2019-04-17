@@ -3,9 +3,6 @@ package REST.store.model;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.eclipse.jetty.util.security.Password;
-
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -47,7 +44,6 @@ public class User {
 	}
 	
 	public User(String name, String email, String password, String address, String payMethod) {
-		//super();
 		this.name=name;
 		this.email=email;
 		this.password=password;
@@ -78,14 +74,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	/*
-	 * public Password getPassword() { return password; }
-	 * 
-	 * public void setPassword(Password password) { this.password = password; }
-	 */
-	
-	
 
 	public String getAddress() {
 		return address;

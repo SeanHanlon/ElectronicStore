@@ -28,7 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Purchase {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	@ManyToOne

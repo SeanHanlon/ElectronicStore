@@ -29,25 +29,25 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/c3p0-0.9.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/commons-collections-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/ejb3-persistence.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate-c3p0-3.6.0.Final.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate-commons-annotations.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate-core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/hibernate-entitymanager.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/javassist-3.9.0.GA.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/jersey-mvc-jsp-2.25.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/log4j-1.2.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/log4j-1.2.15.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/mysql-connector-java.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/c15801977/Downloads/lib/lib/slf4j-simple-1.5.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/commons-collections-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate-c3p0-3.6.0.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/hibernate-entitymanager.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/jersey-mvc-jsp-2.25.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/mysql-connector-java.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/seanh_000/Downloads/lib/slf4j-simple-1.5.8.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 
 import REST.store.model.Admin;
 import REST.store.model.Item;
+import REST.store.model.Purchase;
 import REST.store.model.User;
 
   
@@ -67,6 +68,13 @@ public class PersistenceUtil implements Serializable {
 		List<Admin> admins = (List<Admin>) em.createNamedQuery("Admin.findAllAdmins").getResultList();
 		em.close();
 		return admins;
+	}
+	
+	public static List<Purchase> findAllPurchases(){
+		EntityManager em = emf.createEntityManager();
+		List<Purchase> purchases = (List<Purchase>) em.createNamedQuery("Purchase.findAll").getResultList();
+		em.close();
+		return purchases;
 	}
 
 	public static User findUserByName(String name){
