@@ -16,6 +16,19 @@ public class UserService {
 		return users;
 	}
 	
+	public User getUserById(int id) {
+		User user = PersistenceUtil.findUserById(id);
+		
+		if(user != null)
+		{
+			return user;
+		}
+		else 
+		{
+			return null;
+		}
+	}
+	
 	public void addUser(User user) {
 		PersistenceUtil.persist(user);
 	}
