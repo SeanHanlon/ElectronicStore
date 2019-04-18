@@ -37,19 +37,18 @@ public class User {
 	private String email;
 	private String password;
 	private String address;
-	
-	@OneToOne
 	private ShoppingCart cart;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String email, String password, String address) {
+	public User(String name, String email, String password, String address, ShoppingCart cart) {
 		this.name=name;
 		this.email=email;
 		this.password=password;
 		this.address=address;
+		this.cart=cart;
 	}
 
 	public int getId() {

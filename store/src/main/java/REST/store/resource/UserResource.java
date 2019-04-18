@@ -34,7 +34,7 @@ public class UserResource {
 	public void addUser(@FormParam(value = "name") String name, @FormParam(value = "email") String email,
 			@FormParam(value = "password") String password, @FormParam(value = "address") String address) {
 		System.out.println(name);
-		User user = new User(name, email, password, address);
+		User user = new User(name, email, password, address, null);
 		userService.addUser(user);
 	}
 	

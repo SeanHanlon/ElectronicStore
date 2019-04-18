@@ -41,14 +41,25 @@ public class ShoppingCartResource {
 		}
 	}
 	
+	//@Path("/addItem/{userId}/{itemId}")
 	@POST
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Path("/addItem/{userId}/{itemId}")
-	public void addUser(@PathParam(value = "userId") int userId, @PathParam(value = "itemId") int itemId) {
+	@Path("/addItem")
+	public void addItem(@FormParam(value = "userId") int userId, @FormParam(value = "itemId") int itemId) {
 		System.out.println(userId + itemId);
 		User user = userService.getUserById(userId);
 		Item item = itemService.getItemById(itemId);
-		user.getCart().addItem(item);
+		if(item != null)
+		{
+			System.out.println(user.getName() + " " + item.getManufacturer());
+			user.getCart().addItem(item);
+		}
+		else
+		{
+			System.out.println("item empty");
+		}
+		
+		//user.getCart().addItem(item);
 		//User user = new User(name, email, password, address);
 		//userService.addUser(user);
 	}

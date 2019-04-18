@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -36,8 +37,11 @@ public class Item {
 	private int rating;
 	private String review;
 	
-	/*@ManyToMany(mappedBy = "purchase_content")
-	private Set<Purchase> purchases = new HashSet<Purchase>();*/
+	@ManyToMany(mappedBy = "cart_items")
+	private Set<ShoppingCart> cart = new HashSet<ShoppingCart>();
+	
+	/*@ManyToOne
+	private ShoppingCart cart;*/
 	
 	public Item() {
 		
@@ -125,6 +129,22 @@ public class Item {
 	public void setReview(String review) {
 		this.review = review;
 	}
+
+	/*public ShoppingCart getCart() {
+		return cart;
+	}
+
+	public void setCart(ShoppingCart cart) {
+		this.cart = cart;
+	}*/
+
+	/*public Set<ShoppingCart> getCart() {
+		return cart;
+	}
+
+	public void setCart(Set<ShoppingCart> cart) {
+		this.cart = cart;
+	}*/
 	
 	
 	
