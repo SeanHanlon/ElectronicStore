@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @NamedQueries( {
 	@NamedQuery(name = "Item.findAllItems", query = "select o from Item o"),
+	@NamedQuery(name = "Item.findById", query = "select o from Item o where o.id=:id "),
 	@NamedQuery(name = "Item.findByCategory", query = "select o from Item o where o.category like concat('%', :category, '%') "),
 	@NamedQuery(name = "Item.findByManufacturer", query = "select o from Item o where o.manufacturer=:manufacturer "),
 	@NamedQuery(name = "Item.findByTitle", query = "select o from Item o where o.title like concat('%', :title, '%') ")
@@ -35,8 +36,8 @@ public class Item {
 	private int rating;
 	private String review;
 	
-	@ManyToMany(mappedBy = "purchase_content")
-	private Set<Purchase> purchases = new HashSet<Purchase>();
+	/*@ManyToMany(mappedBy = "purchase_content")
+	private Set<Purchase> purchases = new HashSet<Purchase>();*/
 	
 	public Item() {
 		
@@ -101,13 +102,13 @@ public class Item {
 		this.stockLevel = stockLevel;
 	}
 
-	public Set<Purchase> getPurchases() {
+	/*public Set<Purchase> getPurchases() {
 		return purchases;
 	}
 
 	public void setPurchases(Set<Purchase> purchases) {
 		this.purchases = purchases;
-	}
+	}*/
 
 	public int getRating() {
 		return rating;

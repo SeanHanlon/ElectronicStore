@@ -21,6 +21,11 @@ public class ItemService {
 		PersistenceUtil.persist(item);
 	}
 	
+	public Item getItemById(int id) {
+		Item item = PersistenceUtil.findItemById(id);
+		return item;
+	}
+	
 	public List<Item> getItemByCategory(String category) {
 		List<Item> found = PersistenceUtil.findItemByCategory(category);
 		if(found!=null)

@@ -107,6 +107,16 @@ public class PersistenceUtil implements Serializable {
 			return users.get(0);
 	}
 	
+	public static Item findItemById(int id){
+		EntityManager em = emf.createEntityManager();
+		List<Item> items = (List<Item>) em.createNamedQuery("Item.findById").setParameter("id", id).getResultList();
+		em.close();
+		if (items.size() == 0)
+			return null;
+		else 
+			return items.get(0);
+	}
+	
 	public static List<Item> findItemByCategory(String category){
 		EntityManager em = emf.createEntityManager();
 		List<Item> items = (List<Item>) em.createNamedQuery("Item.findByCategory").setParameter("category", category).getResultList();
