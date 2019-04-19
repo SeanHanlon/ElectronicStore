@@ -60,8 +60,6 @@ public class ShoppingCart {
 		this.id = id;
 	}
 
-	
-
 	public void addItem(Item item) {
 		items.add(item);
 	}
