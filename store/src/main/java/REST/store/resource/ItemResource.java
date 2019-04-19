@@ -7,6 +7,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -83,6 +84,23 @@ public class ItemResource {
 		else
 		{
 			return null;
+		}
+		
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	@Path("/addReview/{itemId}")
+	public void addReview(@PathParam(value = "itemId") int id, @FormParam(value = "review") String review) {
+		Item item = itemService.getItemById(id);
+		
+		if(item != null)
+		{
+			item.setReview(review);
+		}
+		else
+		{
+			System.out.println("cannot find item");
 		}
 		
 	}

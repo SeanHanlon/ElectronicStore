@@ -33,80 +33,25 @@ public class ShoppingCart {
 	private int id;
 	
 	//TODO add relationship between items and cart
-	/*@ManyToOne
-	private final List<Item> items;*/
+	//@ManyToOne
+	private final List<Item> items;
 	
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	/*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "cart_items", joinColumns = {
 			@JoinColumn(name = "cartId", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "item_id", referencedColumnName = "id") })
 	@ElementCollection(targetClass = Item.class)
-	private Set<Item> cart_items = new HashSet<Item>();
-	
-	public ShoppingCart() {
-		
-	}
-	
-	/*public ShoppingCart(Set<Item> cart_items) {
-		this.cart_items=cart_items;
-	}*/
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Set<Item> getCart_items() {
-		return cart_items;
-	}
-
-	public void setCart_items(Set<Item> cart_items) {
-		this.cart_items = cart_items;
-	}
-	
-	public void addItem(Item item) {
-		this.cart_items.add(item);
-	}
+	private Set<Item> cart_items = new HashSet<Item>();*/
 	
 	/*public ShoppingCart() {
 		
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Set<Item> getCart_items() {
-		return cart_items;
-	}
-
-	public void setCart_items(Set<Item> cart_items) {
-		this.cart_items = cart_items;
 	}*/
 	
-	
-	
-	/*
 	public ShoppingCart() {
 		items = new ArrayList<Item>();
 	}
-	
-	/*public Set<Item> getCart_items() {
-		return cart_items;
-	}
 
-	public void setCart_items(Set<Item> cart_items) {
-		this.cart_items = cart_items;
-	}*/
-/*
 	public int getId() {
 		return id;
 	}
@@ -115,9 +60,7 @@ public class ShoppingCart {
 		this.id = id;
 	}
 
-	public List<Item> getItems() {
-		return items;
-	}
+	
 
 	public void addItem(Item item) {
 		items.add(item);
@@ -140,7 +83,7 @@ public class ShoppingCart {
 	public boolean pay(PaymentMethod method) {
 		double totalCost = calcTotalCost();
 		return method.pay(totalCost);
-	}*/
+	}
 	
 	
 	
