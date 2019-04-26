@@ -11,6 +11,7 @@ import REST.store.model.Admin;
 import REST.store.model.CartItems;
 import REST.store.model.Item;
 import REST.store.model.Purchase;
+import REST.store.model.Rating;
 import REST.store.model.ShoppingCart;
 import REST.store.model.User;
 
@@ -128,6 +129,18 @@ public class PersistenceUtil implements Serializable {
 		else 
 			return items.get(0);
 	}
+	
+	public static Rating findRatingById(int id){
+		EntityManager em = emf.createEntityManager();
+		List<Rating> ratings = (List<Rating>) em.createNamedQuery("Rating.findById").setParameter("id", id).getResultList();
+		em.close();
+		if (ratings.size() == 0)
+			return null;
+		else 
+			return ratings.get(0);
+	}
+	
+	
 	
 	public static ShoppingCart findCartById(int id){
 		EntityManager em = emf.createEntityManager();
