@@ -1,24 +1,76 @@
 package REST.store.model;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class MasterCard implements PaymentMethod {
 	
 	private final String name;
 	private final String cardNumber;
-	private final Date expires;
+	private final String expires;
 	
-	public MasterCard(String name, String cardNumber, Date expires) {
+	public MasterCard(String name, String cardNumber, String expires) {
 		super();
 		this.name = name;
 		this.cardNumber = cardNumber;
 		this.expires = expires;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public String getExpires() {
+		return expires;
+	}
+	
+
 	@Override
 	public boolean pay(double amount) {
 		// TODO Auto-generated method stub
-		return true;
+		if(checkNumber(this.cardNumber) && this.checkDate(this.expires)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
+
+	@Override
+	public boolean checkDate(String expiry) {
+		// TODO Auto-generated method stub
+		ZoneId zoneId = ZoneId.of("GMT");
+		LocalDate today = LocalDate.now(zoneId);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+		
+		LocalDate expiryDate = LocalDate.parse(expiry, formatter);
+		if (expiryDate.isBefore(today)) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	@Override
+	public boolean checkNumber(String cardNumber) {
+		// TODO Auto-generated method stub
+		if(cardNumber.length() != 15) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	
 
 }

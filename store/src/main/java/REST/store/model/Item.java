@@ -108,6 +108,32 @@ public class Item {
 		this.stockLevel = stockLevel;
 	}
 
+	public Set<CartItems> getCartItems() {
+		return cartItems;
+	}
+
+	public void setCartItems(Set<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
+	public Set<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
+	
+
 
 	
 	
