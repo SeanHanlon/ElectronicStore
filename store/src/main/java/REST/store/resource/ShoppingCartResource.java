@@ -1,6 +1,9 @@
 package REST.store.resource;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -11,9 +14,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import REST.store.model.CartItems;
 import REST.store.model.Item;
 import REST.store.model.ShoppingCart;
 import REST.store.model.User;
+import REST.store.service.CartItemsService;
 import REST.store.service.ItemService;
 import REST.store.service.ShoppingCartService;
 import REST.store.service.UserService;
@@ -24,6 +29,7 @@ public class ShoppingCartResource {
 	ShoppingCartService cartService = new ShoppingCartService();
 	UserService userService = new UserService();
 	ItemService itemService = new ItemService();
+	CartItemsService cartItemsService = new CartItemsService();
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
@@ -49,19 +55,38 @@ public class ShoppingCartResource {
 		System.out.println(userId + itemId);
 		User user = userService.getUserById(userId);
 		Item item = itemService.getItemById(itemId);
-		if(item != null)
-		{
-			System.out.println(user.getName() + " " + item.getManufacturer());
-			user.getCart().addItem(item);
-		}
-		else
-		{
-			System.out.println("item empty");
-		}
+		ShoppingCart cart = user.getCart();
 		
-		//user.getCart().addItem(item);
-		//User user = new User(name, email, password, address);
-		//userService.addUser(user);
+		if (item.getStockLevel() > 0) {
+			ArrayList<CartItems> cart_items = new ArrayList<CartItems>();
+			cart_items.addAll(cart.getCartItems());
+			boolean b = true;
+			
+			for (int i =0;i<cart_items.size();i++) {
+				CartItems current = cart_items.get(i);
+				if(current.getItem() == item) {
+					int temp = cart_items.get(i).getAmount();
+					cart_items.get(i).setAmount(temp + 1);
+					cartItemsService.saveCartItems(cart_items.get(i));
+					Set<CartItems> updatedList = new HashSet<>(cart_items);
+					cart.setCartItems(updatedList);
+					b = false;
+				}
+			}
+			
+			if (b) {
+				CartItems cartItems = new CartItems(cart, item, 1);
+				cartItemsService.saveCartItems(cartItems);
+				cart_items.add(cartItems);
+				Set<CartItems> updatedList = new HashSet<>(cart_items);
+				cart.setCartItems(updatedList);
+			}
+			
+			cartService.saveCart(cart);
+		}
+		else {
+			System.out.println("no stock");
+		}
 	}
 
 }

@@ -3,6 +3,7 @@ package REST.store.resource;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import REST.store.model.Item;
 import REST.store.model.User;
+import REST.store.persistence.PersistenceUtil;
 import REST.store.service.ItemService;
 
 @Path("/items")
@@ -31,9 +33,8 @@ public class ItemResource {
 	@Path("/addItem")
 	public void addItem(@FormParam(value = "title") String title, @FormParam(value = "manufacturer") String manufacturer,
 			@FormParam(value = "price") double price, @FormParam(value = "category") String category,
-			@FormParam(value = "stockLevel") int stockLevel, @FormParam(value = "rating") int rating,
-			@FormParam(value = "review") String review) {
-		Item item = new Item(title, manufacturer, price, category, stockLevel, rating, review);
+			@FormParam(value = "stockLevel") int stockLevel) {
+		Item item = new Item(title, manufacturer, price, category, stockLevel);
 		itemService.addItem(item);
 	}
 	
@@ -85,24 +86,14 @@ public class ItemResource {
 		{
 			return null;
 		}
-		
 	}
-	
-	@POST
+		
+	@DELETE
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Path("/addReview/{itemId}")
-	public void addReview(@PathParam(value = "itemId") int id, @FormParam(value = "review") String review) {
+	@Path("/deleteItem")
+	public void deleteItem(@FormParam(value = "itemId") int id) {
 		Item item = itemService.getItemById(id);
-		
-		if(item != null)
-		{
-			item.setReview(review);
-		}
-		else
-		{
-			System.out.println("cannot find item");
-		}
-		
+		PersistenceUtil.remove(item);
 	}
 	
 }

@@ -1,6 +1,7 @@
 package REST.store.service;
 
 import REST.store.model.ShoppingCart;
+import REST.store.persistence.PersistenceUtil;
 
 public class ShoppingCartService {
 
@@ -8,8 +9,7 @@ public class ShoppingCartService {
 		
 	}
 	
-	public ShoppingCart getCart() {
-		return null;
-		
+	public void saveCart(ShoppingCart cart) {
+		PersistenceUtil.persist(cart);
 	}
 }
