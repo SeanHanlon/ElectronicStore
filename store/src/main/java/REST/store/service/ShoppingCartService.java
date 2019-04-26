@@ -12,4 +12,9 @@ public class ShoppingCartService {
 	public void saveCart(ShoppingCart cart) {
 		PersistenceUtil.persist(cart);
 	}
+	
+	public ShoppingCart findById(int id) {
+		ShoppingCart cart = PersistenceUtil.findCartById(id);
+		return cart;
+	}
 }

@@ -8,8 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import REST.store.model.Admin;
+import REST.store.model.CartItems;
 import REST.store.model.Item;
 import REST.store.model.Purchase;
+import REST.store.model.ShoppingCart;
 import REST.store.model.User;
 
   
@@ -115,6 +117,26 @@ public class PersistenceUtil implements Serializable {
 			return null;
 		else 
 			return items.get(0);
+	}
+	
+	public static ShoppingCart findCartById(int id){
+		EntityManager em = emf.createEntityManager();
+		List<ShoppingCart> carts = (List<ShoppingCart>) em.createNamedQuery("Cart.findById").setParameter("id", id).getResultList();
+		em.close();
+		if (carts.size() == 0)
+			return null;
+		else 
+			return carts.get(0);
+	}
+	
+	public static List<CartItems> findByCartId(int id){
+		EntityManager em = emf.createEntityManager();
+		List<CartItems> carts = (List<CartItems>) em.createNamedQuery("CartItems.findById").setParameter("id", id).getResultList();
+		em.close();
+		if (carts.size() == 0)
+			return null;
+		else 
+			return carts;
 	}
 	
 	public static List<Item> findItemByCategory(String category){

@@ -1,7 +1,9 @@
 package REST.store.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import REST.store.model.CartItems;
 import REST.store.model.Item;
 import REST.store.model.User;
 import REST.store.persistence.PersistenceUtil;
@@ -56,6 +58,16 @@ public class ItemService {
 		}
 		else {
 			return null;
+		}
+	}
+	
+	public void updateStock(ArrayList<CartItems> cartItems) {
+		for(int i=0;i<cartItems.size();i++) {
+			CartItems cartItem = cartItems.get(i);
+			Item item = cartItem.getItem();
+			int stockLevel = item.getStockLevel() - cartItem.getAmount();
+			item.setStockLevel(stockLevel);
+			//this.addItem(item);
 		}
 	}
 }

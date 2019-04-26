@@ -49,13 +49,10 @@ public class Purchase {
 		
 	}
 	
-	public Purchase(User user, Set<Item> purchase_content, double total,
-			String payMethod, String address) {
+	public Purchase(User user, Set<Item> purchase_content, double total) {
 		this.user=user;
 		this.purchase_content=purchase_content;
 		this.total=total;
-		this.payMethod=payMethod;
-		this.address=address;
 	}
 
 	public int getId() {
