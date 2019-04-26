@@ -31,6 +31,7 @@ public class Purchase {
 	private int id;
 	
 	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -38,14 +39,23 @@ public class Purchase {
 			@JoinColumn(name = "purchase_id", referencedColumnName = "id") }, inverseJoinColumns = {
 					@JoinColumn(name = "item_id", referencedColumnName = "id") })
 	@ElementCollection(targetClass = Item.class)
-	private Set<Item> purchase_content = new HashSet<Item>();
+	private Set<Item> purchase_content;
+	
+	private double total;
+	private String payMethod;
+	private String address;
 	
 	public Purchase() {
 		
 	}
 	
-	public Purchase(int id) {
-		this.id=id;
+	public Purchase(User user, Set<Item> purchase_content, double total,
+			String payMethod, String address) {
+		this.user=user;
+		this.purchase_content=purchase_content;
+		this.total=total;
+		this.payMethod=payMethod;
+		this.address=address;
 	}
 
 	public int getId() {
@@ -71,6 +81,36 @@ public class Purchase {
 	public void setPurchase_content(Set<Item> purchase_content) {
 		this.purchase_content = purchase_content;
 	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	public String getPayMethod() {
+		return payMethod;
+	}
+
+	public void setPayMethod(String payMethod) {
+		this.payMethod = payMethod;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public boolean pay(PaymentMethod method, ShoppingCart cart) {
+		double totalCost = cart.calcTotalCost();
+		return method.pay(totalCost);
+	}
+	
 	
 	
 

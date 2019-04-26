@@ -1,6 +1,7 @@
 package REST.store.model;
 
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -37,18 +38,27 @@ public class User {
 	private String email;
 	private String password;
 	private String address;
+	
+	@OneToMany
+	@JoinColumn(name = "user_id")
+	private Set<Purchase> purchases;
+	
+	@OneToOne
 	private ShoppingCart cart;
+	
+	@OneToMany
+	@JoinColumn(name = "user_id")
+	private Set<Rating> ratings;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String email, String password, String address, ShoppingCart cart) {
+	public User(String name, String email, String password, String address) {
 		this.name=name;
 		this.email=email;
 		this.password=password;
 		this.address=address;
-		this.cart=cart;
 	}
 
 	public int getId() {
@@ -97,6 +107,22 @@ public class User {
 
 	public void setCart(ShoppingCart cart) {
 		this.cart = cart;
+	}
+
+	public Set<Purchase> getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(Set<Purchase> purchases) {
+		this.purchases = purchases;
+	}
+
+	public Set<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(Set<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
 	
