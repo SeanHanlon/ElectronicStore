@@ -20,4 +20,8 @@ public class PurchaseService {
 	public void addPurchase(Purchase p) {
 		PersistenceUtil.persist(p);
 	}
+	
+	public Purchase getPurchaseById(int id) {
+		return PersistenceUtil.findPurchaseById(id);
+	}
 }

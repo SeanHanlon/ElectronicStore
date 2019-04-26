@@ -119,6 +119,16 @@ public class PersistenceUtil implements Serializable {
 			return items.get(0);
 	}
 	
+	public static Purchase findPurchaseById(int id){
+		EntityManager em = emf.createEntityManager();
+		List<Purchase> items = (List<Purchase>) em.createNamedQuery("Purchase.findById").setParameter("id", id).getResultList();
+		em.close();
+		if (items.size() == 0)
+			return null;
+		else 
+			return items.get(0);
+	}
+	
 	public static ShoppingCart findCartById(int id){
 		EntityManager em = emf.createEntityManager();
 		List<ShoppingCart> carts = (List<ShoppingCart>) em.createNamedQuery("Cart.findById").setParameter("id", id).getResultList();

@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import REST.store.model.CartItems;
 import REST.store.model.Item;
+import REST.store.model.MasterCard;
 import REST.store.model.Purchase;
 import REST.store.model.PurchaseFacadeImp;
 import REST.store.model.ShoppingCart;
@@ -35,12 +36,13 @@ public class PurchaseResource {
 	ShoppingCartService cartService = new ShoppingCartService();
 	CartItemsService cartItemsService = new CartItemsService();
 	
-	/*@GET
+	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public Purchase getPurchase(@FormParam(value="cartId") int id) {
-		ShoppingCart cart = cartService.findById(id);
-		ArrayList<CartItems> cart_items = new ArrayList<CartItems>();
+	public Purchase getPurchase(@FormParam(value="purchaseId") int id) {
+		Purchase purchase = purchaseService.getPurchaseById(id);
+		return purchase;
+		/*ArrayList<CartItems> cart_items = new ArrayList<CartItems>();
 		cart_items.addAll(cart.getCartItems());
 		double total = cart.calcTotalCost();
 		Set<Item> items = new HashSet<>();
@@ -49,11 +51,11 @@ public class PurchaseResource {
 			CartItems cartItem = cart_items.get(i);
 			Item item = itemService.getItemById(cartItem.getItem().getId());
 			items.add(item);
-		}
+		}*/
 		
 		
 		
-	}*/
+	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
@@ -83,10 +85,23 @@ public class PurchaseResource {
 					itemService.updateStock(cart_items);
 					cartItemsService.emptyCart(cartItemsService.findByCartId(cart.getId()));
 					
+				} else {
+					System.out.println("error in payment");
 				}
+			} else if (request.getParameter("payment_method").equals("Mastercard")) {
+				
+				MasterCard mastercard = new MasterCard(request.getParameter("name"), request.getParameter("cardNumber"),
+						request.getParameter("expires"));
+
+				if (purchase.pay(mastercard, cart)) {
+					purchase.setPayMethod("MasterCard");
+					purchaseService.addPurchase(purchase);
+					itemService.updateStock(cart_items);
+					cartItemsService.emptyCart(cartItemsService.findByCartId(cart.getId()));
 			}
 		}
-		
+	
+	}
 	}
 
 }
