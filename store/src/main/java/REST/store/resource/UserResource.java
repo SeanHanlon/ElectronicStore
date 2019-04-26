@@ -14,13 +14,16 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import REST.store.service.ShoppingCartService;
 import REST.store.service.UserService;
+import REST.store.model.ShoppingCart;
 import REST.store.model.User;
 
 @Path("/users")
 public class UserResource {
 	
 	UserService userService = new UserService();
+	ShoppingCartService cartService = new ShoppingCartService();
 	
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
@@ -36,6 +39,9 @@ public class UserResource {
 		System.out.println(name);
 		User user = new User(name, email, password, address);
 		userService.addUser(user);
+		ShoppingCart cart = ShoppingCart.getInstance(user);
+		cartService.saveCart(cart);
+		
 	}
 	
 	@Context

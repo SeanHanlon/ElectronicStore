@@ -40,6 +40,7 @@ public class ShoppingCart {
 	@OneToMany(mappedBy="cart")
 	private Set<CartItems> cartItems;
 	
+	private static ShoppingCart cart;
 	
 	public ShoppingCart() {
 		
@@ -101,6 +102,12 @@ public class ShoppingCart {
 		return method.pay(totalCost);
 	}
 	
-	
+	public static ShoppingCart getInstance(User user) {
+		if(cart == null) {
+			cart = new ShoppingCart(user);
+		}
+		return cart;
+		
+	}
 	
 }

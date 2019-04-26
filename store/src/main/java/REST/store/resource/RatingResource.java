@@ -53,7 +53,6 @@ public class RatingResource {
 		theRating.setItem(item);
 		ratingService.addRating(theRating);
 		
-		
 	}
 
 }
