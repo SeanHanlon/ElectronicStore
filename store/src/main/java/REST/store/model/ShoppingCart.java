@@ -18,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @NamedQueries( {
@@ -32,25 +34,44 @@ public class ShoppingCart {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	//TODO add relationship between items and cart
-	//@ManyToOne
-	private final List<Item> items;
+	@OneToOne
+	private User user;
 	
+	@OneToMany(mappedBy="cart")
+	private Set<CartItems> cartItems;
 	
-	/*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(name = "cart_items", joinColumns = {
-			@JoinColumn(name = "cartId", referencedColumnName = "id") }, inverseJoinColumns = {
-					@JoinColumn(name = "item_id", referencedColumnName = "id") })
-	@ElementCollection(targetClass = Item.class)
-	private Set<Item> cart_items = new HashSet<Item>();*/
-	
-	/*public ShoppingCart() {
-		
-	}*/
 	
 	public ShoppingCart() {
-		items = new ArrayList<Item>();
+		
 	}
+	
+	public ShoppingCart(User user) {
+		this.user=user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+
+	public Set<CartItems> getCartItems() {
+		return cartItems;
+	}
+
+
+
+	public void setCartItems(Set<CartItems> cartItems) {
+		this.cartItems = cartItems;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -60,19 +81,16 @@ public class ShoppingCart {
 		this.id = id;
 	}
 
-	public void addItem(Item item) {
-		items.add(item);
-	}
-	
-	public void removeItem(Item item) {
-		items.remove(item);
-	}
 	
 	public double calcTotalCost() {
 		double total = 0.0;
 		
-		for(Item item : items) {
-			total += item.getPrice();
+		ArrayList<CartItems> cart_items = new ArrayList<CartItems>();
+		cart_items.addAll(this.getCartItems());
+		
+		for(int i=0;i<cart_items.size();i++) {
+			Item item = cart_items.get(i).getItem();
+			total += (item.getPrice()*cart_items.get(i).getAmount());
 		}
 		
 		return total;

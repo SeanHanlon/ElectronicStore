@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @NamedQueries( {
@@ -34,28 +36,28 @@ public class Item {
 	private double price;
 	private String category;
 	private int stockLevel;
-	private int rating;
-	private String review;
 	
-	@ManyToMany(mappedBy = "cart_items")
-	private Set<ShoppingCart> cart = new HashSet<ShoppingCart>();
+	@OneToMany(mappedBy="item")
+	private Set<CartItems> cartItems;
 	
-	/*@ManyToOne
-	private ShoppingCart cart;*/
+	@ManyToMany(mappedBy="purchaseItems")
+	private Set<Purchase> purchases;
+	
+	@OneToMany
+	@JoinColumn(name="item_id")
+	private Set<Rating> ratings;
+	
 	
 	public Item() {
 		
 	}
 	
-	public Item(String title, String manufacturer, double price, String category, int stockLevel, int rating,
-			String review) {
+	public Item(String title, String manufacturer, double price, String category, int stockLevel) {
 		this.title=title;
 		this.manufacturer=manufacturer;
 		this.price=price;
 		this.category=category;
 		this.stockLevel=stockLevel;
-		this.rating=rating;
-		this.review=review;
 	}
 
 	public int getId() {
@@ -106,46 +108,7 @@ public class Item {
 		this.stockLevel = stockLevel;
 	}
 
-	/*public Set<Purchase> getPurchases() {
-		return purchases;
-	}
 
-	public void setPurchases(Set<Purchase> purchases) {
-		this.purchases = purchases;
-	}*/
-
-	public int getRating() {
-		return rating;
-	}
-
-	public void setRating(int rating) {
-		this.rating = rating;
-	}
-
-	public String getReview() {
-		return review;
-	}
-
-	public void setReview(String review) {
-		this.review = review;
-	}
-
-	/*public ShoppingCart getCart() {
-		return cart;
-	}
-
-	public void setCart(ShoppingCart cart) {
-		this.cart = cart;
-	}*/
-
-	/*public Set<ShoppingCart> getCart() {
-		return cart;
-	}
-
-	public void setCart(Set<ShoppingCart> cart) {
-		this.cart = cart;
-	}*/
-	
 	
 	
 }
