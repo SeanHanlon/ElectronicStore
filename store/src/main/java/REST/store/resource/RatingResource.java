@@ -32,7 +32,7 @@ public class RatingResource {
 	CartItemsService cartItemsService = new CartItemsService();
 	RatingService ratingService = new RatingService();
 	
-	@GET
+	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Rating getRating(@FormParam(value="ratingId") int id) {

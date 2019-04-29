@@ -36,7 +36,7 @@ public class PurchaseResource {
 	ShoppingCartService cartService = new ShoppingCartService();
 	CartItemsService cartItemsService = new CartItemsService();
 	
-	@GET
+	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Purchase getPurchase(@FormParam(value="purchaseId") int id) {
@@ -58,6 +58,7 @@ public class PurchaseResource {
 	}
 	
 	@POST
+	@Path("/makePurchase")
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public void makePurchase(@FormParam(value="userId") int id, @FormParam(value="total") double total,
