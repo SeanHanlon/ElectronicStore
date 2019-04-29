@@ -43,7 +43,7 @@ public class User {
 	@JoinColumn(name = "user_id")
 	private Set<Purchase> purchases;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY, optional=false, mappedBy="user")
 	private ShoppingCart cart;
 	
 	@OneToMany

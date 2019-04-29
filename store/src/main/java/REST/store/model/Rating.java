@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries( {
 	@NamedQuery(name = "Rating.findById", query = "select o from Rating o where o.id=:id ")
 })
+
 @XmlRootElement
 @Entity
 public class Rating {

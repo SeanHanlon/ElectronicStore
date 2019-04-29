@@ -34,7 +34,7 @@ public class ShoppingCart {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.LAZY, optional=false)
 	private User user;
 	
 	@OneToMany(mappedBy="cart")

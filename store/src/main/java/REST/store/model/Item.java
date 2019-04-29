@@ -40,13 +40,12 @@ public class Item {
 	@OneToMany(mappedBy="item")
 	private Set<CartItems> cartItems;
 	
-	@ManyToMany(mappedBy="purchaseItems")
+	@ManyToMany(mappedBy="purchase_content")
 	private Set<Purchase> purchases;
 	
 	@OneToMany
-	@JoinColumn(name="item_id")
+	@JoinColumn(name="item")
 	private Set<Rating> ratings;
-	
 	
 	public Item() {
 		
